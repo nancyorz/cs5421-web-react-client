@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  cs5421_web_react_client:
+    container_name: cs5421_web_react_client
+    image: cs5421_web_react_client
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8080:8080"
