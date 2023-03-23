@@ -19,6 +19,8 @@ jobs:
           # rm package-lock.json
           yarn install --frozen-lockfile
           yarn run build
+      - name: Remove image
+        run: docker rmi --force 'cs5421_web_react_client'
       - name: Build image
         run: docker build -t cs5421_web_react_client .
       - name: Install doctl
