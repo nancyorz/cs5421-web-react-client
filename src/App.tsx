@@ -76,7 +76,7 @@ function App() {
     console.log(query);
     console.log(json);
 
-    const request = new Request('/query', {
+    const request = new Request('/api/query', {
       method: 'POST',
       headers: new Headers({
         'content-type': 'application/json',
