@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Editor from '@monaco-editor/react';
 
 interface JsonEditorProps {
@@ -11,6 +11,10 @@ function JsonEditor({ value, onChange, readOnly = false }: JsonEditorProps) {
   const [editorValue, setEditorValue] = useState(
     JSON.stringify(value, null, 2)
   );
+
+  useEffect(() => {
+    setEditorValue(JSON.stringify(value, null, 2));
+  }, [value]);
 
   const handleEditorChange = (value?: string) => {
     setEditorValue(value ?? '');

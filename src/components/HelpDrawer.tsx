@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Drawer from '@mui/material/Drawer';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { styled, useTheme } from '@mui/material/styles';
@@ -11,6 +12,7 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { toast } from '../utils';
 
 export const drawerWidth = 450;
 
@@ -25,8 +27,13 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 const columns: GridColDef[] = [
   {
-    field: 'syntax',
-    headerName: 'Syntax',
+    field: 'id',
+    headerName: 'ID',
+    width: 10,
+  },
+  {
+    field: 'expression',
+    headerName: 'Expression',
     width: 100,
   },
   {
@@ -43,14 +50,38 @@ const columns: GridColDef[] = [
   },
 ];
 
-const rows = [
-  { id: 1, syntax: '[condition]', description: 'some description' },
-  { id: 2, syntax: '/', description: 'some description' },
-  { id: 3, syntax: ':', description: 'some description' },
-  { id: 4, syntax: '.', description: 'some description' },
-];
 function HelpDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
   const theme = useTheme();
+  const [rows, setRows] = useState<
+    { id: number; expression: string; example: string; description: string }[]
+  >([]);
+
+  useEffect(() => {
+    const request = new Request('/api/expressions', {
+      method: 'GET',
+      headers: new Headers({
+        'content-type': 'application/json',
+      }),
+    });
+    fetch(request)
+      .then((response) => {
+        if (response.status < 200 || response.status >= 300) {
+          throw new Error(response.statusText);
+        }
+        return response;
+      })
+      .then((response) => response.json())
+      .then(({ data }) => {
+        console.log(data);
+        setRows(data);
+      })
+      .catch((err) => {
+        const errorMsg = err?.message || 'Network error';
+        toast(errorMsg, 'error');
+        throw new Error(errorMsg);
+      });
+  }, []);
+
   return (
     <Drawer
       sx={{

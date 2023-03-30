@@ -6,17 +6,20 @@ import Button from '@mui/material/Button';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import MuiAppBar, { AppBarProps } from '@mui/material/AppBar';
-import { SnackbarProvider, VariantType, enqueueSnackbar } from 'notistack';
+import { SnackbarProvider } from 'notistack';
+import { toast } from './utils';
+import { data } from './mock/json';
 
 import InputArea from './components/InputArea';
 import HelpDrawer, { drawerWidth } from './components/HelpDrawer';
 import JsonEditor from './components/JsonEditor';
 import Footer from './components/Footer';
 
-const navItems = ['Home', 'Our Team'];
+const navItems = ['Home'];
 
+const JSON_INPUT_EXAMPLE = JSON.stringify(data);
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
   open?: boolean;
 }>(({ theme, open }) => ({
@@ -53,28 +56,25 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-const MyFooter = styled(Footer)(() => ({
+const StyledFooter = styled(Footer)(() => ({
   position: 'fixed',
   width: '100%',
   bottom: '5vh',
   textAlign: 'center',
 }));
 
-const toast = (message: string, variant: VariantType) => {
-  enqueueSnackbar(message, {
-    variant,
-    anchorOrigin: { vertical: 'top', horizontal: 'center' },
-  });
-};
-
 function App() {
-  const [json, setJson] = useState({ a: '123' });
-  const [result, setResult] = useState({ a: 456 });
+  const [json, setJson] = useState(JSON.parse(JSON_INPUT_EXAMPLE));
+  const [result, setResult] = useState();
   const [helpDrawerOpen, setHelpDrawerOpen] = useState(false);
 
   const handleQueryByXPath = async (query: string) => {
     console.log(query);
     console.log(json);
+
+    if (!query || !json) {
+      return;
+    }
 
     const request = new Request('/api/query', {
       method: 'POST',
@@ -83,7 +83,7 @@ function App() {
       }),
       body: JSON.stringify({
         query,
-        source: json,
+        source: JSON.stringify(json),
       }),
     });
 
@@ -95,7 +95,11 @@ function App() {
         return response.json();
       })
       .then(({ data }) => {
-        toast('Submitted Successfully', 'success');
+        if (data) {
+          setResult(data);
+        } else {
+          toast('No results', 'error');
+        }
       })
       .catch((err) => {
         const errorMsg = err?.message || 'Network error';
@@ -117,17 +121,8 @@ function App() {
     setHelpDrawerOpen(false);
   };
 
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: '#ce93d8',
-      },
-    },
-  });
-
   return (
-    // <ThemeProvider theme={theme}>
-    <SnackbarProvider maxSnack={3}>
+    <SnackbarProvider maxSnack={3} autoHideDuration={1000}>
       <AppBar position="sticky">
         <Toolbar>
           <IconButton
@@ -189,9 +184,8 @@ function App() {
           </Grid>
         </Box>
       </Main>
-      <MyFooter />
+      <StyledFooter />
     </SnackbarProvider>
-    // </ThemeProvider>
   );
 }
 
