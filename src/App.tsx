@@ -10,7 +10,7 @@ import { styled } from '@mui/material/styles';
 import MuiAppBar, { AppBarProps } from '@mui/material/AppBar';
 import { SnackbarProvider } from 'notistack';
 import { toast } from './utils';
-import { data } from './mock/json';
+import { dataDemo as data } from './mock/json';
 
 import InputArea from './components/InputArea';
 import HelpDrawer, { drawerWidth } from './components/HelpDrawer';

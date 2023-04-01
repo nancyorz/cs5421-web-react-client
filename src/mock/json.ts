@@ -1,15 +1,103 @@
 export const data = {
-    movies: [
-      {
-        title: 'Reservoir Dogs',
-        director: 'Quentin Tarantino',
-        year: 1992,
+  movies: [
+    {
+      title: 'Reservoir Dogs',
+      director: 'Quentin Tarantino',
+      year: 1992,
+      cast: ['Harvey Keitel', 'Tim Roth', 'Michael Madsen', 'Chris Penn'],
+    },
+    {
+      title: 'Pulp Fiction',
+      director: 'Quentin Tarantino',
+      year: 1994,
+      cast: [
+        'John Travolta',
+        'Uma Thurman',
+        'Samuel L. Jackson',
+        'Bruce Willis',
+      ],
+    },
+    {
+      title: 'Jackie Brown',
+      director: 'Quentin Tarantino',
+      year: 1997,
+      cast: [
+        'Pam Grier',
+        'Samuel L. Jackson',
+        'Robert Forster',
+        'Bridget Fonda',
+        'Michael Keaton',
+        'Robert De Niro',
+      ],
+    },
+    {
+      title: 'Kill Bill: Vol. 1',
+      director: 'Quentin Tarantino',
+      year: 2003,
+      cast: [
+        'Uma Thurman',
+        'David Carradine',
+        'Daryl Hannah',
+        'Michael Madsen',
+        'Lucy Liu',
+        'Vivica A. Fox',
+      ],
+    },
+    {
+      title: 'Kill Bill: Vol. 2',
+      director: 'Quentin Tarantino',
+      year: 2004,
+      cast: [
+        'Uma Thurman',
+        'David Carradine',
+        'Daryl Hannah',
+        'Michael Madsen',
+        'Vivica A. Fox',
+      ],
+    },
+    {
+      title: 'Taxi Driver',
+      director: 'Martin Scorsese',
+      year: 1976,
+      cast: ['Robert De Niro', 'Jodie Foster', 'Cybill Schepherd'],
+    },
+    {
+      title: 'Goodfellas',
+      director: 'Martin Scorsese',
+      year: 1990,
+      cast: ['Robert De Niro', 'Ray Liotta', 'Joe Pesci'],
+    },
+    {
+      title: 'The Age of Innocence',
+      director: 'Martin Scorsese',
+      year: 1993,
+      cast: ['Daniel Day-Lewis', 'Michelle Pfeiffer', 'Winona Ryder'],
+    },
+    {
+      title: 'Mean Streets',
+      director: 'Martin Scorsese',
+      year: 1973,
+      cast: ['Robert De Niro', 'Harvey Keitel', 'David Proval'],
+    },
+  ],
+};
+
+export const dataDemo = {
+  name: 'Eric liu',
+  movies: [
+    {
+      title: 'Reservoir Dogs',
+      director: 'Quentin Tarantino',
+      year: 1992,
+      other: {
         cast: ['Harvey Keitel', 'Tim Roth', 'Michael Madsen', 'Chris Penn'],
       },
-      {
-        title: 'Pulp Fiction',
-        director: 'Quentin Tarantino',
-        year: 1994,
+    },
+    {
+      title: 'Pulp Fiction',
+      director: 'Quentin Tarantino',
+      year: 1994,
+      other: {
         cast: [
           'John Travolta',
           'Uma Thurman',
@@ -17,10 +105,12 @@ export const data = {
           'Bruce Willis',
         ],
       },
-      {
-        title: 'Jackie Brown',
-        director: 'Quentin Tarantino',
-        year: 1997,
+    },
+    {
+      title: 'Jackie Brown',
+      director: 'Quentin Tarantino',
+      year: 1997,
+      other: {
         cast: [
           'Pam Grier',
           'Samuel L. Jackson',
@@ -30,10 +120,12 @@ export const data = {
           'Robert De Niro',
         ],
       },
-      {
-        title: 'Kill Bill: Vol. 1',
-        director: 'Quentin Tarantino',
-        year: 2003,
+    },
+    {
+      title: 'Kill Bill: Vol. 1',
+      director: 'Quentin Tarantino',
+      year: 2003,
+      other: {
         cast: [
           'Uma Thurman',
           'David Carradine',
@@ -43,10 +135,12 @@ export const data = {
           'Vivica A. Fox',
         ],
       },
-      {
-        title: 'Kill Bill: Vol. 2',
-        director: 'Quentin Tarantino',
-        year: 2004,
+    },
+    {
+      title: 'Kill Bill: Vol. 2',
+      director: 'Quentin Tarantino',
+      year: 2004,
+      other: {
         cast: [
           'Uma Thurman',
           'David Carradine',
@@ -55,29 +149,38 @@ export const data = {
           'Vivica A. Fox',
         ],
       },
-      {
-        title: 'Taxi Driver',
-        director: 'Martin Scorsese',
-        year: 1976,
+    },
+    {
+      title: 'Taxi Driver',
+      director: 'Martin Scorsese',
+      year: 1976,
+      other: {
         cast: ['Robert De Niro', 'Jodie Foster', 'Cybill Schepherd'],
       },
-      {
-        title: 'Goodfellas',
-        director: 'Martin Scorsese',
-        year: 1990,
+    },
+    {
+      title: 'Goodfellas',
+      director: 'Martin Scorsese',
+      year: 1990,
+      other: {
         cast: ['Robert De Niro', 'Ray Liotta', 'Joe Pesci'],
       },
-      {
-        title: 'The Age of Innocence',
-        director: 'Martin Scorsese',
-        year: 1993,
+    },
+    {
+      title: 'The Age of Innocence',
+      director: 'Martin Scorsese',
+      year: 1993,
+      other: {
         cast: ['Daniel Day-Lewis', 'Michelle Pfeiffer', 'Winona Ryder'],
       },
-      {
-        title: 'Mean Streets',
-        director: 'Martin Scorsese',
-        year: 1973,
+    },
+    {
+      title: 'Mean Streets',
+      director: 'Martin Scorsese',
+      year: 1973,
+      other: {
         cast: ['Robert De Niro', 'Harvey Keitel', 'David Proval'],
       },
-    ],
-  }
+    },
+  ],
+};
