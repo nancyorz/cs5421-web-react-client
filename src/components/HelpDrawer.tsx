@@ -37,16 +37,16 @@ const columns: GridColDef[] = [
     width: 100,
   },
   {
-    field: 'description',
-    headerName: 'Description',
-    description: 'This column has a value getter and is not sortable.',
-    width: 150,
-  },
-  {
     field: 'example',
     headerName: 'Example',
     description: 'This column has a value getter and is not sortable.',
     width: 150,
+  },
+  {
+    field: 'description',
+    headerName: 'Description',
+    description: 'This column has a value getter and is not sortable.',
+    width: 300,
   },
 ];
 
@@ -126,10 +126,11 @@ function HelpDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
         <DataGrid
           rows={rows}
           columns={columns}
+          autoHeight={true}
           initialState={{
             pagination: {
               paginationModel: {
-                pageSize: 5,
+                pageSize: 20,
               },
             },
           }}

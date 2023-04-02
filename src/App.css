@@ -1,9 +1,4 @@
-#root {
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.MuiDataGrid-root .MuiDataGrid-cell {
+  white-space: normal !important;
+  word-wrap: break-word !important;
 }
-
-/* .card {
-  padding: 2em;
-} */

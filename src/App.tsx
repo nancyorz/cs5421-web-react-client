@@ -16,6 +16,7 @@ import InputArea from './components/InputArea';
 import HelpDrawer, { drawerWidth } from './components/HelpDrawer';
 import JsonEditor from './components/JsonEditor';
 import Footer from './components/Footer';
+import './App.css';
 
 const navItems = ['Home'];
 
